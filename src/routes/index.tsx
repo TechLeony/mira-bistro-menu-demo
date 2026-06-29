@@ -192,24 +192,32 @@ function Index() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            aria-label="Menü"
-            onClick={() => setNavOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
-          >
+          <div className="flex items-center gap-2 md:gap-3">
+            <nav className="hidden items-center gap-1 md:flex">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <span className="hidden items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1.5 text-xs font-medium text-foreground/80 md:inline-flex">
+              <Clock className="h-3.5 w-3.5" />
+              09:00 - 23:00
+            </span>
+            <span className="inline-flex items-center gap-1 text-[11px] text-foreground/70 md:hidden">
+              <Clock className="h-3 w-3" />
+              09:00 - 23:00
+            </span>
+            <button
+              type="button"
+              aria-label="Menü"
+              onClick={() => setNavOpen((o) => !o)}
+              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
+            >
             {navOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
         </div>
