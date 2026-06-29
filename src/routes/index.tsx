@@ -203,15 +203,6 @@ function Index() {
                 {l.label}
               </a>
             ))}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="ml-2 inline-flex items-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-4 py-2 text-sm font-semibold text-[color:var(--whatsapp-foreground)] shadow-sm transition-colors hover:bg-[color:var(--whatsapp-hover)]"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              WhatsApp
-            </a>
           </nav>
 
           <button
@@ -237,16 +228,6 @@ function Index() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setNavOpen(false)}
-                className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-[color:var(--whatsapp)] px-4 py-3 font-semibold text-[color:var(--whatsapp-foreground)] hover:bg-[color:var(--whatsapp-hover)]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp'tan Ulaş
-              </a>
             </div>
           </div>
         )}
@@ -276,19 +257,17 @@ function Index() {
 
           <div className="mt-9 flex flex-col items-stretch gap-3 sm:mx-auto sm:max-w-sm">
             <a
-              href="#featured"
+              href="#menu"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-base font-semibold text-[color:var(--espresso)] shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
             >
-              Menüyü Gör <ChevronRight className="h-5 w-5" />
+              Menü <ChevronRight className="h-5 w-5" />
             </a>
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-6 py-4 text-base font-semibold text-[color:var(--whatsapp-foreground)] shadow-lg shadow-black/25 transition-colors hover:bg-[color:var(--whatsapp-hover)]"
+              href="#featured"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-base font-semibold text-[color:var(--cream)] backdrop-blur transition-colors hover:bg-white/20"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-              WhatsApp'tan Ulaş
+              <Sparkles className="h-5 w-5" />
+              Mira Favorileri
             </a>
           </div>
 
@@ -503,24 +482,24 @@ function Index() {
               Atmosfer
             </span>
             <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-              Lezzet kadar atmosfer de önemli.
+              Mira'nın eşsiz atmosferinde büyüleyici bir deneyim ve rahatlatıcı bir mola.
             </h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {[gallery1, gallery2, gallery3, gallery4].map((src, i) => (
               <div
                 key={i}
                 className={`overflow-hidden rounded-2xl ${
-                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-square" : "aspect-square"
+                  i === 0 ? "lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-square" : "aspect-[4/3]"
                 }`}
               >
                 <img
                   src={src}
                   alt="Mira Bistro atmosfer"
                   loading="lazy"
-                  width={800}
-                  height={1024}
+                  width={1200}
+                  height={1200}
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
