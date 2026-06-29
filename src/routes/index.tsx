@@ -501,24 +501,24 @@ function Index() {
               Atmosfer
             </span>
             <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-              Lezzet kadar atmosfer de önemli.
+              Mira'nın eşsiz atmosferinde büyüleyici bir deneyim ve rahatlatıcı bir mola.
             </h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {[gallery1, gallery2, gallery3, gallery4].map((src, i) => (
               <div
                 key={i}
                 className={`overflow-hidden rounded-2xl ${
-                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-square" : "aspect-square"
+                  i === 0 ? "lg:col-span-2 lg:row-span-2 aspect-[4/3] lg:aspect-square" : "aspect-[4/3]"
                 }`}
               >
                 <img
                   src={src}
                   alt="Mira Bistro atmosfer"
                   loading="lazy"
-                  width={800}
-                  height={1024}
+                  width={1200}
+                  height={1200}
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
