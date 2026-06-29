@@ -297,8 +297,8 @@ function Index() {
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285, badge: "Şefimizin Favorisi" },
-              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145, badge: "Müşterilerimizin Favorisi" },
+              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285, badge: "Şefin Önerisi" },
+              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145, badge: "Yazın En Tatlı Molası" },
               { img: cheesecakeImg, name: "Lotus Cheesecake", desc: "Lotus kreması ve bisküvi tabanı", price: 175, badge: "Tatlı Krizi Kurtarıcısı" },
             ].map((p) => (
               <article
