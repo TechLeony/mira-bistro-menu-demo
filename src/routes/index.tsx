@@ -218,8 +218,9 @@ function Index() {
               onClick={() => setNavOpen((o) => !o)}
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
             >
-            {navOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-          </button>
+              {navOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {navOpen && (
