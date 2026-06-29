@@ -7,7 +7,6 @@ import {
   Instagram,
   MapPin,
   Clock,
-  Download,
   Coffee,
   Sparkles,
   Leaf,
@@ -257,28 +256,19 @@ function Index() {
 
           <div className="mt-9 flex flex-col items-stretch gap-3 sm:mx-auto sm:max-w-sm">
             <a
-              href="#menu"
+              href="#featured"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-base font-semibold text-[color:var(--espresso)] shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
             >
-              Menü <ChevronRight className="h-5 w-5" />
+              <Sparkles className="h-5 w-5" />
+              Mira'nın Favorileri
             </a>
             <a
-              href="#featured"
+              href="#menu"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-base font-semibold text-[color:var(--cream)] backdrop-blur transition-colors hover:bg-white/20"
             >
-              <Sparkles className="h-5 w-5" />
-              Mira Favorileri
+              Menüyü Gör <ChevronRight className="h-5 w-5" />
             </a>
           </div>
-
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"
-          >
-            <Download className="h-3.5 w-3.5" />
-            Menüyü İndir
-          </button>
         </div>
       </section>
 
@@ -291,22 +281,26 @@ function Index() {
                 Şefin Önerileri
               </span>
               <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-                Mutlaka Deneyin
+                Mira'nın Favorileri
               </h2>
             </div>
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285 },
-              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145 },
-              { img: cheesecakeImg, name: "Lotus Cheesecake", desc: "Lotus kreması ve bisküvi tabanı", price: 175 },
+              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285, badge: "Şefimizin Favorisi" },
+              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145, badge: "Müşterilerimizin Favorisi" },
+              { img: cheesecakeImg, name: "Lotus Cheesecake", desc: "Lotus kreması ve bisküvi tabanı", price: 175, badge: "Tatlı Krizi Kurtarıcısı" },
             ].map((p) => (
               <article
                 key={p.name}
                 className="group overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_40px_-20px_rgba(80,40,10,0.25)] transition hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(80,40,10,0.35)]"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-[color:var(--espresso)]/90 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-[color:var(--cream)] shadow-sm backdrop-blur">
+                    <Sparkles className="h-3 w-3 text-accent" />
+                    {p.badge}
+                  </span>
                   <img
                     src={p.img}
                     alt={p.name}
@@ -588,17 +582,22 @@ function Index() {
       <footer className="bg-[color:var(--espresso)] pb-10 text-[color:var(--cream)]/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 px-5 pt-6 text-xs sm:flex-row sm:px-8">
           <p>© 2026 Mira Bistro. Tüm hakları saklıdır.</p>
-          <div className="flex items-center gap-1.5 text-[color:var(--cream)]/40">
+          <a
+            href="https://leony.tech"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 text-[color:var(--cream)]/40 transition-colors hover:text-[color:var(--cream)]/70"
+          >
             <img
               src={lionLogo}
               alt=""
               loading="lazy"
-              width={16}
-              height={16}
-              className="h-4 w-4 opacity-60"
+              width={14}
+              height={14}
+              className="h-3.5 w-3.5 opacity-60"
             />
-            <span className="font-display italic tracking-wide">Designed and developed by Leony</span>
-          </div>
+            <span className="font-display italic tracking-wide">Designed and developed by leony.tech</span>
+          </a>
         </div>
       </footer>
     </div>
