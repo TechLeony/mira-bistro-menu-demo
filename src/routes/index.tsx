@@ -192,26 +192,35 @@ function Index() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            aria-label="Menü"
-            onClick={() => setNavOpen((o) => !o)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
-          >
-            {navOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-2 md:gap-3">
+            <nav className="hidden items-center gap-1 md:flex">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <span className="hidden items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1.5 text-xs font-medium text-foreground/80 md:inline-flex">
+              <Clock className="h-3.5 w-3.5" />
+              09:00 - 23:00
+            </span>
+            <span className="inline-flex items-center gap-1 text-[11px] text-foreground/70 md:hidden">
+              <Clock className="h-3 w-3" />
+              09:00 - 23:00
+            </span>
+            <button
+              type="button"
+              aria-label="Menü"
+              onClick={() => setNavOpen((o) => !o)}
+              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
+            >
+              {navOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {navOpen && (
@@ -288,8 +297,8 @@ function Index() {
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285, badge: "Şefimizin Favorisi" },
-              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145, badge: "Müşterilerimizin Favorisi" },
+              { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285, badge: "Şefin Önerisi" },
+              { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145, badge: "Yazın En Tatlı Molası" },
               { img: cheesecakeImg, name: "Lotus Cheesecake", desc: "Lotus kreması ve bisküvi tabanı", price: 175, badge: "Tatlı Krizi Kurtarıcısı" },
             ].map((p) => (
               <article
@@ -582,12 +591,7 @@ function Index() {
       <footer className="bg-[color:var(--espresso)] pb-10 text-[color:var(--cream)]/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 px-5 pt-6 text-xs sm:flex-row sm:px-8">
           <p>© 2026 Mira Bistro. Tüm hakları saklıdır.</p>
-          <a
-            href="https://leony.tech"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 text-[color:var(--cream)]/40 transition-colors hover:text-[color:var(--cream)]/70"
-          >
+          <div className="flex items-center gap-1.5 text-[color:var(--cream)]/40">
             <img
               src={lionLogo}
               alt=""
@@ -596,8 +600,18 @@ function Index() {
               height={14}
               className="h-3.5 w-3.5 opacity-60"
             />
-            <span className="font-display italic tracking-wide">Designed and developed by leony.tech</span>
-          </a>
+            <span className="font-display italic tracking-wide">
+              Designed and developed by{" "}
+              <a
+                href="https://leony.tech"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-[color:var(--cream)]/30 underline-offset-2 transition hover:decoration-[color:var(--cream)]/70"
+              >
+                leony.tech
+              </a>
+            </span>
+          </div>
         </div>
       </footer>
     </div>
