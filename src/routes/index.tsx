@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Menu as MenuIcon,
   X,
@@ -13,6 +13,7 @@ import {
   Leaf,
   Flame,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import burgerImg from "@/assets/burger.jpg";
@@ -22,6 +23,7 @@ import gallery1 from "@/assets/gallery1.jpg";
 import gallery2 from "@/assets/gallery2.jpg";
 import gallery3 from "@/assets/gallery3.jpg";
 import gallery4 from "@/assets/gallery4.jpg";
+import lionLogo from "@/assets/lion-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -133,12 +135,32 @@ function Index() {
   const [navOpen, setNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>(categories[0]);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const check = () => {
+      const hasOverflow = el.scrollWidth > el.clientWidth + 1;
+      setCanScrollLeft(hasOverflow && el.scrollLeft > 0);
+      setCanScrollRight(hasOverflow && el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+    };
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      el.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   const items = useMemo(() => menu[active] ?? [], [active]);
@@ -293,12 +315,6 @@ function Index() {
                 Mutlaka Deneyin
               </h2>
             </div>
-            <a
-              href="#menu"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
-            >
-              Direkt Menüye Geç <ChevronRight className="h-4 w-4" />
-            </a>
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -333,15 +349,6 @@ function Index() {
               </article>
             ))}
           </div>
-
-          <div className="mt-10 flex justify-center">
-            <a
-              href="#menu"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-            >
-              Direkt Menüye Geç <ChevronRight className="h-4 w-4" />
-            </a>
-          </div>
         </div>
       </section>
 
@@ -362,8 +369,31 @@ function Index() {
 
           {/* Tabs */}
           <div className="sticky top-16 z-30 -mx-5 mt-8 sm:mx-0">
-            <div className="bg-background/85 px-5 py-3 backdrop-blur-md sm:rounded-2xl sm:px-3 sm:py-2 sm:shadow-[0_8px_24px_-16px_rgba(80,40,10,0.25)]">
-              <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="relative bg-background/85 backdrop-blur-md sm:rounded-2xl sm:shadow-[0_8px_24px_-16px_rgba(80,40,10,0.25)]">
+              {canScrollLeft && (
+                <button
+                  type="button"
+                  aria-label="Önceki kategoriler"
+                  onClick={() => tabsRef.current?.scrollBy({ left: -200, behavior: "smooth" })}
+                  className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/90 text-muted-foreground shadow-sm backdrop-blur-sm transition hover:bg-background"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+              )}
+              {canScrollRight && (
+                <button
+                  type="button"
+                  aria-label="Sonraki kategoriler"
+                  onClick={() => tabsRef.current?.scrollBy({ left: 200, behavior: "smooth" })}
+                  className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/90 text-muted-foreground shadow-sm backdrop-blur-sm transition hover:bg-background"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              )}
+              <div
+                ref={tabsRef}
+                className="flex gap-2 overflow-x-auto px-5 py-3 sm:px-3 sm:py-2 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
                 {categories.map((c) => {
                   const isActive = c === active;
                   return (
@@ -561,20 +591,15 @@ function Index() {
                 <h3 className="font-display text-xl font-semibold">Çalışma Saatleri</h3>
               </div>
               <dl className="mt-5 divide-y divide-white/10 text-sm">
-                <div className="flex items-center justify-between py-3">
+                <div className="flex items-center justify-between gap-4 py-3">
                   <dt className="text-[color:var(--cream)]/75">Pazartesi – Cuma</dt>
                   <dd className="font-semibold">09:00 – 23:00</dd>
                 </div>
-                <div className="flex items-center justify-between py-3">
+                <div className="flex items-center justify-between gap-4 py-3">
                   <dt className="text-[color:var(--cream)]/75">Cumartesi – Pazar</dt>
                   <dd className="font-semibold">10:00 – 00:00</dd>
                 </div>
               </dl>
-
-              <div className="mt-6 rounded-2xl bg-white/5 p-4 text-xs leading-relaxed text-[color:var(--cream)]/70">
-                Mira Bistro QR menüsü mobil cihazlar için optimize edilmiştir.
-                Fiyatlar değişiklik gösterebilir.
-              </div>
             </div>
           </div>
         </div>
@@ -584,9 +609,17 @@ function Index() {
       <footer className="bg-[color:var(--espresso)] pb-10 text-[color:var(--cream)]/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 px-5 pt-6 text-xs sm:flex-row sm:px-8">
           <p>© 2026 Mira Bistro. Tüm hakları saklıdır.</p>
-          <p className="font-display italic tracking-wide text-[color:var(--cream)]/45">
-            Website by Leony
-          </p>
+          <div className="flex items-center gap-1.5 text-[color:var(--cream)]/40">
+            <img
+              src={lionLogo}
+              alt=""
+              loading="lazy"
+              width={16}
+              height={16}
+              className="h-4 w-4 opacity-60"
+            />
+            <span className="font-display italic tracking-wide">Designed and developed by Leony</span>
+          </div>
         </div>
       </footer>
     </div>
