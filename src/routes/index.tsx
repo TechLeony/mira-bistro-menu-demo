@@ -276,19 +276,17 @@ function Index() {
 
           <div className="mt-9 flex flex-col items-stretch gap-3 sm:mx-auto sm:max-w-sm">
             <a
-              href="#featured"
+              href="#menu"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-base font-semibold text-[color:var(--espresso)] shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
             >
-              Menüyü Gör <ChevronRight className="h-5 w-5" />
+              Menü <ChevronRight className="h-5 w-5" />
             </a>
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-6 py-4 text-base font-semibold text-[color:var(--whatsapp-foreground)] shadow-lg shadow-black/25 transition-colors hover:bg-[color:var(--whatsapp-hover)]"
+              href="#featured"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-base font-semibold text-[color:var(--cream)] backdrop-blur transition-colors hover:bg-white/20"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-              WhatsApp'tan Ulaş
+              <Sparkles className="h-5 w-5" />
+              Mira Favorileri
             </a>
           </div>
 
