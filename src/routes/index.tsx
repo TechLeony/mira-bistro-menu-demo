@@ -7,14 +7,11 @@ import {
   Instagram,
   MapPin,
   Clock,
-  QrCode,
   Download,
   Coffee,
   Sparkles,
   Leaf,
   Flame,
-  Smartphone,
-  Tag,
   ChevronRight,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
@@ -148,6 +145,7 @@ function Index() {
 
   const navLinks = [
     { href: "#anasayfa", label: "Anasayfa" },
+    { href: "#featured", label: "Öne Çıkanlar" },
     { href: "#menu", label: "Menü" },
     { href: "#hakkimizda", label: "Hakkımızda" },
     { href: "#iletisim", label: "İletişim" },
@@ -233,7 +231,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-20">
+      <section className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden pt-20">
         <img
           src={heroImg}
           alt="Mira Bistro iç mekan"
@@ -241,117 +239,52 @@ function Index() {
           height={1280}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[oklch(0.18_0.04_40/0.55)] via-[oklch(0.18_0.04_40/0.45)] to-[oklch(0.18_0.04_40/0.75)]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[oklch(0.16_0.04_40/0.78)] via-[oklch(0.16_0.04_40/0.65)] to-[oklch(0.12_0.03_40/0.85)]" />
 
-        <div className="mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8">
-          <div className="max-w-2xl text-[color:var(--cream)]">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wider backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" />
-              QR Menü · Mira Bistro
-            </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] sm:text-6xl">
-              Günün her anına <span className="text-accent">lezzetli</span> bir mola.
-            </h1>
-            <p className="mt-5 max-w-xl text-base text-white/85 sm:text-lg">
-              Kahveden burgerlere, tatlılardan ana yemeklere kadar güncel menümüzü kolayca inceleyin.
-            </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#menu"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[color:var(--espresso)] shadow-lg shadow-black/20 transition-transform hover:-translate-y-0.5"
-              >
-                Menüyü İncele <ChevronRight className="h-4 w-4" />
-              </a>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-6 py-3 text-sm font-semibold text-[color:var(--whatsapp-foreground)] shadow-lg shadow-black/20 transition-colors hover:bg-[color:var(--whatsapp-hover)]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp'tan Ulaş
-              </a>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {[
-                { icon: QrCode, label: "QR Menü" },
-                { icon: Tag, label: "Güncel Fiyatlar" },
-                { icon: Smartphone, label: "Mobil Uyumlu" },
-              ].map((b) => (
-                <span
-                  key={b.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur"
-                >
-                  <b.icon className="h-3.5 w-3.5" /> {b.label}
-                </span>
-              ))}
-            </div>
+        <div className="mx-auto w-full max-w-2xl px-5 py-12 text-center text-[color:var(--cream)] sm:px-8">
+          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-white/25 bg-white/10 text-accent backdrop-blur sm:h-20 sm:w-20">
+            <Coffee className="h-7 w-7 sm:h-9 sm:w-9" />
           </div>
-        </div>
-      </section>
+          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] sm:text-7xl">
+            Mira <span className="text-accent">Bistro</span>
+          </h1>
+          <p className="mt-5 text-base text-white/85 sm:text-lg">
+            Lezzetli bir mola için menümüze göz atın.
+          </p>
 
-      {/* QR INTRO */}
-      <section className="relative py-20 sm:py-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 md:grid-cols-2">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-              Dijital Menü
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
-              QR Menümüze Hoş Geldiniz
-            </h2>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-              Kategoriler arasında gezerek ürünlerimizi, açıklamalarını ve güncel
-              fiyatlarımızı kolayca inceleyebilirsiniz.
-            </p>
-            <p className="mt-3 text-sm italic text-muted-foreground/80">
-              Menü içerikleri demo amaçlıdır.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#menu"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-              >
-                Menüye Git <ChevronRight className="h-4 w-4" />
-              </a>
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-secondary"
-              >
-                <Download className="h-4 w-4" />
-                Yazdırılabilir Menü
-              </button>
-            </div>
+          <div className="mt-9 flex flex-col items-stretch gap-3 sm:mx-auto sm:max-w-sm">
+            <a
+              href="#featured"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-base font-semibold text-[color:var(--espresso)] shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
+            >
+              Menüyü Gör <ChevronRight className="h-5 w-5" />
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-6 py-4 text-base font-semibold text-[color:var(--whatsapp-foreground)] shadow-lg shadow-black/25 transition-colors hover:bg-[color:var(--whatsapp-hover)]"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp'tan Ulaş
+            </a>
           </div>
 
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-full max-w-xs rotate-[-2deg] rounded-3xl border border-border bg-card p-6 shadow-[0_24px_60px_-30px_rgba(80,40,10,0.45)]">
-              <div className="grid place-items-center rounded-2xl bg-[color:var(--cream)] p-6">
-                <div className="grid h-40 w-40 place-items-center rounded-2xl bg-[color:var(--espresso)] text-[color:var(--cream)]">
-                  <QrCode className="h-24 w-24" strokeWidth={1.2} />
-                </div>
-              </div>
-              <div className="mt-4 text-center">
-                <p className="font-display text-lg font-semibold">Masalar için QR Menü</p>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Telefonunuzla okutarak menüye anında ulaşın.
-                </p>
-              </div>
-              <div className="pointer-events-none absolute -right-3 -top-3 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-[color:var(--espresso)] shadow">
-                Demo
-              </div>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Menüyü İndir
+          </button>
         </div>
       </section>
 
       {/* FEATURED */}
-      <section className="bg-secondary/40 py-20 sm:py-24">
+      <section id="featured" className="bg-secondary/40 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                 Şefin Önerileri
@@ -362,13 +295,13 @@ function Index() {
             </div>
             <a
               href="#menu"
-              className="hidden text-sm font-semibold text-primary hover:underline sm:inline-flex sm:items-center sm:gap-1"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
             >
-              Tüm menüyü gör <ChevronRight className="h-4 w-4" />
+              Direkt Menüye Geç <ChevronRight className="h-4 w-4" />
             </a>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { img: burgerImg, name: "Signature Burger", desc: "Dana köfte, cheddar, karamelize soğan, özel sos", price: 285 },
               { img: latteImg, name: "Iced Caramel Latte", desc: "Espresso, süt, karamel ve buz", price: 145 },
@@ -399,6 +332,15 @@ function Index() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <a
+              href="#menu"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+            >
+              Direkt Menüye Geç <ChevronRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
