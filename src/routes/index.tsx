@@ -591,12 +591,7 @@ function Index() {
       <footer className="bg-[color:var(--espresso)] pb-10 text-[color:var(--cream)]/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 px-5 pt-6 text-xs sm:flex-row sm:px-8">
           <p>© 2026 Mira Bistro. Tüm hakları saklıdır.</p>
-          <a
-            href="https://leony.tech"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 text-[color:var(--cream)]/40 transition-colors hover:text-[color:var(--cream)]/70"
-          >
+          <div className="flex items-center gap-1.5 text-[color:var(--cream)]/40">
             <img
               src={lionLogo}
               alt=""
@@ -605,8 +600,18 @@ function Index() {
               height={14}
               className="h-3.5 w-3.5 opacity-60"
             />
-            <span className="font-display italic tracking-wide">Designed and developed by leony.tech</span>
-          </a>
+            <span className="font-display italic tracking-wide">
+              Designed and developed by{" "}
+              <a
+                href="https://leony.tech"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-[color:var(--cream)]/30 underline-offset-2 transition hover:decoration-[color:var(--cream)]/70"
+              >
+                leony.tech
+              </a>
+            </span>
+          </div>
         </div>
       </footer>
     </div>
