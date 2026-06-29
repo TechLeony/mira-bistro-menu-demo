@@ -203,15 +203,6 @@ function Index() {
                 {l.label}
               </a>
             ))}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="ml-2 inline-flex items-center gap-2 rounded-full bg-[color:var(--whatsapp)] px-4 py-2 text-sm font-semibold text-[color:var(--whatsapp-foreground)] shadow-sm transition-colors hover:bg-[color:var(--whatsapp-hover)]"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              WhatsApp
-            </a>
           </nav>
 
           <button
@@ -237,16 +228,6 @@ function Index() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setNavOpen(false)}
-                className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-[color:var(--whatsapp)] px-4 py-3 font-semibold text-[color:var(--whatsapp-foreground)] hover:bg-[color:var(--whatsapp-hover)]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp'tan Ulaş
-              </a>
             </div>
           </div>
         )}
